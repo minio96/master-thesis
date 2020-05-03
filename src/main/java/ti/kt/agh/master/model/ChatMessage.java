@@ -1,13 +1,18 @@
 package ti.kt.agh.master.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ChatMessage {
     private MessageType type;
     private String content;
     private String sender;
 
     public enum MessageType {
+        @JsonProperty("CHAT")
         CHAT,
+        @JsonProperty("JOIN")
         JOIN,
+        @JsonProperty("LEAVE")
         LEAVE
     }
 

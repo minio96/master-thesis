@@ -42,13 +42,21 @@ function onConnected() {
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
     );
-
+    setInterval(doPolling, 3 * 1000);
 }
 
 
 function onError(error) {
     connectingElement.textContent = error.getAuthTag();
     connectingElement.style.color = 'red';
+}
+
+function doPolling() {
+    const userAction = async () => {
+        const response = await fetch('http:/localhost:8080/newMessage');
+        onMessageReceived(response);
+        // do something with myJson
+    }
 }
 
 

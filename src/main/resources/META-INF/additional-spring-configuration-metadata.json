@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.security.mode",
+      "type": "java.lang.Boolean",
+      "description": "Description for spring.security.mode."
+  }
+] }
