@@ -2,7 +2,7 @@ package ti.kt.agh.master.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ChatMessage {
+public class Message {
     private MessageType type;
     private String content;
     private String sender;
@@ -13,7 +13,9 @@ public class ChatMessage {
         @JsonProperty("JOIN")
         JOIN,
         @JsonProperty("LEAVE")
-        LEAVE
+        LEAVE,
+        @JsonProperty("FIRST")
+        FIRST
     }
 
     public MessageType getType() {

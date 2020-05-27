@@ -1,6 +1,11 @@
 'use strict';
 
 let usernamePage = document.querySelector('#username-page');
+let title = document.getElementById('username-page-title');
+let joinButton = document.getElementById('join-game-button');
+let startGame = document.getElementById('start-game');
+let startButton = document.getElementById('start-game-button');
+let name = document.getElementById('name');
 let chatPage = document.querySelector('#chat-page');
 let usernameForm = document.querySelector('#usernameForm');
 let messageForm = document.querySelector('#messageForm');
@@ -20,9 +25,6 @@ function connect(event) {
     username = document.querySelector('#name').value.trim();
 
     if (username) {
-        usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
-
         let socket = new SockJS('/chat');
         stompClient = Stomp.over(socket);
 
@@ -42,7 +44,7 @@ function onConnected() {
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
     );
-    setInterval(doPolling, 3 * 1000);
+    // setInterval(doPolling, 3 * 1000);
 }
 
 
@@ -74,6 +76,11 @@ function sendMessage(event) {
     event.preventDefault();
 }
 
+function startNewGame() {
+    usernamePage.classList.add('hidden');
+    chatPage.classList.remove('hidden');
+}
+
 
 function onMessageReceived(payload) {
     let message = JSON.parse(payload.body);
@@ -81,11 +88,18 @@ function onMessageReceived(payload) {
     let messageElement = document.createElement('li');
 
     if (message.type === 'JOIN') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
+        title.innerText = "Waiting for other players...";
+        name.classList.add('hidden');
+        joinButton.classList.add('hidden');
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
+    } else if (message.type === 'FIRST') {
+        title.innerText = "Start game whenever you want";
+        name.classList.add('hidden');
+        usernameForm.classList.add('hidden');
+        startGame.classList.remove('hidden');
+        startButton.addEventListener("click", startNewGame)
     } else {
         messageElement.classList.add('chat-message');
 

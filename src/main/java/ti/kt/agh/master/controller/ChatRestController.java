@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ti.kt.agh.master.model.ChatMessage;
-import ti.kt.agh.master.service.ChatService;
+import ti.kt.agh.master.model.Message;
+import ti.kt.agh.master.service.GameService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,24 +16,24 @@ import java.util.List;
 @RestController
 public class ChatRestController {
 
-    private ChatService chatService;
+    private GameService gameService;
 
     @Autowired
-    public ChatRestController(ChatService chatService) {
-        this.chatService = chatService;
+    public ChatRestController(GameService gameService) {
+        this.gameService = gameService;
     }
 
     @PostMapping("/message")
-    public ResponseEntity postMessage(@RequestBody ChatMessage chatMessage) {
-        chatService.addMessageToList(chatMessage);
-        System.out.println(System.currentTimeMillis() + " : " + chatMessage.getContent());
+    public ResponseEntity postMessage(@RequestBody Message message) {
+        gameService.addMessageToList(message);
+        System.out.println(System.currentTimeMillis() + " : " + message.getContent());
         return ResponseEntity.ok(HttpStatus.OK + " Message added");
     }
 
     @GetMapping("/newMessage")
-    public List<ChatMessage> pollMessages(int lastMessageId) {
-        List<ChatMessage> messageList = chatService.getMessageList();
-        List<ChatMessage> responseList = new ArrayList<>();
+    public List<Message> pollMessages(int lastMessageId) {
+        List<Message> messageList = gameService.getMessageList();
+        List<Message> responseList = new ArrayList<>();
         while (lastMessageId < messageList.size()) {
             responseList.add(messageList.get(lastMessageId));
             lastMessageId++;
