@@ -3,13 +3,15 @@ package ti.kt.agh.master.model.search.room;
 public class Monster {
 
     private String name;
-    private Integer level;
+    private Integer health;
     private Integer treasures;
+    private String type;
 
-    public Monster(String name, Integer level, Integer treasures) {
+    public Monster(String name, Integer health, Integer treasures) {
         this.name = name;
-        this.level = level;
+        this.health = health;
         this.treasures = treasures;
+        this.type = "monster";
     }
 
     public String getName() {
@@ -20,12 +22,12 @@ public class Monster {
         this.name = name;
     }
 
-    public Integer getLevel() {
-        return level;
+    public Integer getHealth() {
+        return health;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setHealth(Integer health) {
+        this.health = health;
     }
 
     public Integer getTreasures() {
@@ -34,5 +36,18 @@ public class Monster {
 
     public void setTreasures(Integer treasures) {
         this.treasures = treasures;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Monster " + getName() + " level " + getHealth() + " treasures " + getTreasures();
     }
 }

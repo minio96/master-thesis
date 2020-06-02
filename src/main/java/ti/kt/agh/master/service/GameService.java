@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ti.kt.agh.master.model.Message;
 import ti.kt.agh.master.model.Player;
+import ti.kt.agh.master.utils.CardShuffler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,9 @@ public class GameService {
     private static final Logger logger = LoggerFactory.getLogger(GameService.class);
 
     List<Player> playerList = new ArrayList<>();
-    List<Message> messageList = new ArrayList();
+    List<Message> messageList = new ArrayList<>();
     Integer id = 0;
+    int currentPlayer;
 
     public List<Message> getMessageList() {
         return messageList;
@@ -38,4 +40,19 @@ public class GameService {
         return this.id-1;
     }
 
+    public List<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void startGame() {
+        CardShuffler.shuffleCards();
+    }
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 }

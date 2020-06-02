@@ -21,16 +21,47 @@
                 <button type="submit" id="join-game-button" class="accent username-submit">Join Game</button>
             </div>
         </form>
-        <div id="start-game" class="hidden" >
-            <button id="start-game-button" type="button">Start Game</button>
+        <div id="start-game" class="hidden">
+            <button id="start-game-button" type="button" class="accent">Start Game</button>
         </div>
     </div>
 </div>
 
+<div id="game-page" class="hidden">
+    <div class="game-container">
+        <div class="chat-header">
+            <h2>Munchkin game</h2>
+        </div>
+        <div id="equipment">
+            <h2>EQ</h2>
+        </div>
+        <div id="info">
+            <h2>info</h2>
+        </div>
+        <div id="time">
+            <h2>Time</h2>
+        </div>
+        <div >
+            <h2 id="monster">Monster</h2>
+            <ul>
+                <li id="monster-name" ></li>
+                <li id="monster-power"></li>
+                <li id="monster-treasures"></li>
+            </ul>
+        </div>
+        <div id="weapon">
+            <h2>Weapon list (click to use)</h2>
+            <ul id="weapon-list"></ul>
+        </div>
+        <button id="next-round" class="hidden">
+            Next round.
+        </button>
+    </div>
+</div>
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Example Game</h2>
+            <h2>Chat</h2>
         </div>
         <div class="connecting">
             Connecting...

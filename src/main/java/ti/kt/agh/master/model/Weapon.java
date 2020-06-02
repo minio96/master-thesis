@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Weapon {
     private String name;
-    private WeaponType type;
+    private WeaponType weaponType;
     private Integer power;
+    private String type;
 
     public enum WeaponType {
         @JsonProperty("CONSTANT")
@@ -14,10 +15,11 @@ public class Weapon {
         ONE_TIME
     }
 
-    public Weapon(String name, WeaponType type, Integer power) {
+    public Weapon(String name, WeaponType weaponType, Integer bonus) {
         this.name = name;
-        this.type = type;
-        this.power = power;
+        this.weaponType = weaponType;
+        this.power = bonus;
+        this.type = "weapon";
     }
 
     public String getName() {
@@ -29,11 +31,11 @@ public class Weapon {
     }
 
     public WeaponType getType() {
-        return type;
+        return weaponType;
     }
 
     public void setType(WeaponType type) {
-        this.type = type;
+        this.weaponType = type;
     }
 
     public Integer getPower() {

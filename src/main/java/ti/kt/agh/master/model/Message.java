@@ -15,7 +15,13 @@ public class Message {
         @JsonProperty("LEAVE")
         LEAVE,
         @JsonProperty("FIRST")
-        FIRST
+        FIRST,
+        @JsonProperty("START")
+        START,
+        @JsonProperty("HIT")
+        HIT,
+        @JsonProperty("DEAD")
+        DEAD
     }
 
     public MessageType getType() {

@@ -17,7 +17,7 @@ body {
     font-size: 1rem;
     line-height: 1.58;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #283618;
     height: 100%;
 }
 
@@ -27,7 +27,7 @@ body:before {
     position: absolute;
     top: 0;
     left: 0;
-    background: #128ff2;
+    background: #606C38;
     content: "";
     z-index: 0;
 }
@@ -59,6 +59,7 @@ input {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    clear: both;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -93,13 +94,13 @@ button.default {
 }
 
 button.primary {
-    background-color: #128ff2;
+    background-color: #BC6C25;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }
 
 button.accent {
-    background-color: #ff4743;
+    background-color: #BC6C25;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }
@@ -162,21 +163,64 @@ button.accent {
     margin-top: 10px;
 }
 
-#chat-page {
-    position: relative;
+#game-page {
+    position: absolute;
     height: 100%;
+    min-width: calc(100% - 70px);
+    margin-left: 40px;
 }
 
-.chat-container {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+#game-page li {
+    float: left;
+    padding: 16px;
+    border: 2px solid black;
+    margin: 2px;
+}
+
+#game-page ul {
+    list-style-type: none;
+}
+
+.game-container {
+    max-width: calc(100% - 500px);
+    margin-bottom: 20px;
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     margin-top: 30px;
     height: calc(100% - 60px);
-    max-height: 600px;
     position: relative;
+    float: left;
+    min-width: calc(100% - 360px);
+}
+
+.game-container div {
+    float: none;
+}
+
+.weapon-container {
+    height: 80%;
+    width: 20%;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+}
+#chat-page {
+    position: center;
+    height: 100%;
+    margin-left: 20px;
+}
+
+.chat-container {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    margin-top: 30px;
+    height: calc(100% - 60px);
+    position: relative;
+    float: right;;
 }
 
 #chat-page ul {
@@ -229,8 +273,8 @@ button.accent {
     left: 10px;
     display: inline-block;
     vertical-align: middle;
-    font-size: 18px;
-    line-height: 42px;
+    font-size: 14px;
+    line-height: 36px;
     color: #fff;
     text-align: center;
     border-radius: 50%;
@@ -266,6 +310,7 @@ button.accent {
 }
 
 .chat-header h2 {
+    clear: left;
     margin: 0;
     font-weight: 500;
 }
