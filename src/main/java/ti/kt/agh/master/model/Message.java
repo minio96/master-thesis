@@ -2,7 +2,7 @@ package ti.kt.agh.master.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Message {
+public class Message implements Response {
     private MessageType type;
     private String content;
     private String sender;

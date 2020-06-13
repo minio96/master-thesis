@@ -4,7 +4,7 @@ import ti.kt.agh.master.model.search.room.Monster;
 
 import java.util.List;
 
-public class NextRound {
+public class NextRound implements Response {
     String type;
     Monster monster;
     List<Weapon> weaponList;

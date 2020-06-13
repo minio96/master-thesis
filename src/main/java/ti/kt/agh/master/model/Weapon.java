@@ -2,7 +2,7 @@ package ti.kt.agh.master.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Weapon {
+public class Weapon implements Response{
     private String name;
     private WeaponType weaponType;
     private Integer power;

@@ -1,6 +1,6 @@
 package ti.kt.agh.master.model;
 
-public class Player {
+public class Player implements Response {
     private Integer id;
     private String name;
     private Integer level;

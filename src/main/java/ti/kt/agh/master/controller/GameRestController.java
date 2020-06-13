@@ -3,23 +3,23 @@ package ti.kt.agh.master.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ti.kt.agh.master.model.Message;
+import ti.kt.agh.master.model.Player;
+import ti.kt.agh.master.model.Response;
 import ti.kt.agh.master.service.GameService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-public class ChatRestController {
+public class GameRestController {
 
     private GameService gameService;
 
     @Autowired
-    public ChatRestController(GameService gameService) {
+    public GameRestController(GameService gameService) {
         this.gameService = gameService;
     }
 
@@ -41,6 +41,20 @@ public class ChatRestController {
         return responseList;
     }
 
+    @GetMapping("/newPlayer/{username}")
+    public Player newPlayer(@PathVariable String username) {
+        return gameService.getPlayerList().stream()
+                .filter(player -> username.equals(player.getName()))
+                .collect(Collectors.toList()).get(0);
+    }
 
+    @GetMapping("poll")
+    public List<Response> poll(int playerID) {
+        return gameService.getEventsForPlayer(playerID);
+    }
 
+    @GetMapping("status")
+    public String getStatus() {
+        return "status OK";
+    }
 }

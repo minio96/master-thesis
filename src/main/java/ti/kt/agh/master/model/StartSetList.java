@@ -2,7 +2,7 @@ package ti.kt.agh.master.model;
 
 import java.util.List;
 
-public class StartSetList {
+public class StartSetList implements Response{
     private String type;
     private List<StartSet> startSetList;
 

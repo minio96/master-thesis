@@ -1,6 +1,8 @@
 package ti.kt.agh.master.model.search.room;
 
-public class Monster {
+import ti.kt.agh.master.model.Response;
+
+public class Monster implements Response {
 
     private String name;
     private Integer health;

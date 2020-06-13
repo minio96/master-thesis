@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ti.kt.agh.master.model.Message;
 import ti.kt.agh.master.model.Player;
+import ti.kt.agh.master.model.Response;
 import ti.kt.agh.master.utils.CardShuffler;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class GameService {
 
     List<Player> playerList = new ArrayList<>();
     List<Message> messageList = new ArrayList<>();
+    List<List<Response>> eventList = new ArrayList<>();
     Integer id = 0;
     int currentPlayer;
 
@@ -54,5 +56,13 @@ public class GameService {
 
     public void setCurrentPlayer(int currentPlayer) {
         this.currentPlayer = currentPlayer;
+    }
+
+    public List<Response> getEventsForPlayer(int playerID) {
+        return eventList.get(playerID);
+    }
+
+    public void addToEventList(Message message, int playerID) {
+        this.eventList.get(playerID).add(message);
     }
 }
